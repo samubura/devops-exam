@@ -1,6 +1,6 @@
 # Home
 Here is a basic website to host the documentation of the project.
-Created with (MkDocs)[https://www.mkdocs.org] and hosted on GitHub Pages.
+Created with [MkDocs](https://www.mkdocs.org) and hosted on GitHub Pages.
 
 ## Project Structure
 A repository implementing basic devops principles for the phd course.
