@@ -33,6 +33,8 @@ The repo includes an example project that uses the library as dependency.
 
 ## Zenodo
 
+The project is archived on Zenodo.
+[![DOI](https://zenodo.org/badge/868107361.svg)](https://doi.org/10.5281/zenodo.13894275)
 
 ## Github pages
 
