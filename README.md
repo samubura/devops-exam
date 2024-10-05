@@ -29,4 +29,4 @@ The repo includes an example project that uses the library as dependency.
 
 ## Github pages
 
-
+Find the project website[here](https://samubura.github.io/devops-exam/).
