@@ -1,12 +1,19 @@
-# devops-exam
+# Home
+Here is a basic website to host the documentation of the project.
+
+## Project Structure
 A repository implementing basic devops principles for the phd course.
-
 This repository is a template for a Kotlin library.
-
 The repo includes an example project that uses the library as dependency.
 
+    devops-exam
+    |
+    |---docs        #the project website
+    |---lib         #a kotlin library
+    |---example     #the kotlin app using the library
+    |---Dockerfile  #a dockerfile that builds an image to run the app in a container
 
-## Version control 
+## Version control
 - The project uses semantic versioning.
 - New versions are computed by an action that is triggered by the keywords `[patch]`, `[minor]` and `[major]` in the commit message.
 
@@ -17,7 +24,7 @@ The repo includes an example project that uses the library as dependency.
 ## Continuous Integration
 
 - Tests are performed for every push using gradle.
-- New versions are computed by an action, that further tags the commit and creates the release on GitHub. 
+- New versions are computed by an action, that further tags the commit and creates the release on GitHub.
 
 ## Containerization
 

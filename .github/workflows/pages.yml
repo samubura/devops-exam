@@ -1,0 +1,18 @@
+on:
+  push:
+    paths: ["docs/**"]
+  workflow_dispatch:
+
+jobs:
+  pages:
+    runs-on: ubuntu:latest
+    steps:
+      - run: echo "Deploying Github Page"
+      - uses: actions/checkout@v4
+      - run: git config --global user.email "github-actions[bot]@users.noreply.github.com"
+      - run: git config --global user.name "github-actions[bot]"
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+      - run: pip install mkdocs
+      - run: mkdocs gh-deploy --force
