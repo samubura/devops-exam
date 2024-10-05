@@ -1,0 +1,53 @@
+
+name: Tag and Release
+
+on:
+  # Triggers the workflow on push events but only for the "main" branch
+  push:
+    branches: [ "main" ]
+    paths-ignore:
+      - "README.md"
+
+jobs:
+
+  run-tests:
+    uses: ./.github/workflows/test.yml
+
+  tag-and-release:
+    if: ${{contains(github.event.head_commit.message, '[major]') || contains(github.event.head_commit.message, '[minor]') || contains(github.event.head_commit.message, '[patch]')}}
+    runs-on: ubuntu-latest
+    needs: run-tests
+    steps:
+      - id: compute-versiontype
+        run: echo "versiontype=${{ contains(github.event.head_commit.message, '[major]') && 'major' || contains(github.event.head_commit.message, '[minor]') && 'minor' || contains(github.event.head_commit.message, '[patch]') && 'patch'}}" >> "$GITHUB_OUTPUT"
+
+      - id: compute-tag
+        uses: craig-day/compute-tag@v16
+        with:
+          github_token: ${{ github.token }}
+          version_scheme: semantic
+          version_type: ${{steps.compute-versiontype.outputs.versiontype}}
+
+      - run: echo "Next tag will be  ${{steps.compute-tag.outputs.next_tag}}"
+      
+      - uses: actions/checkout@v4.1.0
+
+      - run: cd ${{github.workspace}}
+
+      - uses: rickstaa/action-create-tag@v1.6.3
+        id: tag-create
+        with:
+          tag:  ${{steps.compute-tag.outputs.next_tag}}
+          tag_exists_error: false
+
+      - name: Release
+        uses: softprops/action-gh-release@v0.1.15
+        with:
+          tag_name: ${{steps.compute-tag.outputs.next_tag}}
+          name: "Release ${{steps.compute-tag.outputs.next_tag}}"
+    
+
+
+
+
+          

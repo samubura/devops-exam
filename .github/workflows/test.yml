@@ -1,0 +1,15 @@
+name: Generate Tag
+
+on:
+  - push
+  - workflow_call
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4.1.0
+      - run: cd ${{github.workspace}}
+      - run: ./gradlew test
+
+
