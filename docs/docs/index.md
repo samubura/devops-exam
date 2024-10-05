@@ -1,5 +1,6 @@
 # Home
 Here is a basic website to host the documentation of the project.
+Created with (MkDocs)[https://www.mkdocs.org] and hosted on GitHub Pages.
 
 ## Project Structure
 A repository implementing basic devops principles for the phd course.
@@ -31,7 +32,6 @@ The repo includes an example project that uses the library as dependency.
 - A DockerFile is included to run the example app
 
 ## Zenodo
-
 
 
 ## Github pages
