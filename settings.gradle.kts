@@ -11,4 +11,8 @@ plugins {
 }
 
 rootProject.name = "devops-exam"
-include("lib")
+include(":lib")
+include(":example")
+
+
+

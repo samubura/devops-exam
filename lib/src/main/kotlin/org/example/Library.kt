@@ -1,6 +1,6 @@
 package org.example
 
-public class Library {
+class Library {
     fun someLibraryMethod(): Boolean {
         return true
     }
