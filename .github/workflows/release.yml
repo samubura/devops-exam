@@ -35,11 +35,21 @@ jobs:
           tag:  ${{steps.compute-tag.outputs.next_tag}}
           tag_exists_error: false
 
+      - name: library
+        run: ./gradlew -p lib build
+
+      - name: example
+        run: ./gradlew -p example assembleDist
+
       - name: Release
-        uses: softprops/action-gh-release@v0.1.15
+        uses: softprops/action-gh-release@v2.0.8
         with:
           tag_name: ${{steps.compute-tag.outputs.next_tag}}
           name: "Release ${{steps.compute-tag.outputs.next_tag}}"
+          files: |
+            lib/build/libs/lib.jar
+            example/build/distributions/example.zip 
+            example/build/distributions/example.tar
     
 
 
