@@ -16,5 +16,5 @@ jobs:
         with:
           python-version: '3.x'
       - run: pip install mkdocs
-      - run: cd ${{github.workspace}}/docs
       - run: mkdocs gh-deploy --force
+        working-directory: docs

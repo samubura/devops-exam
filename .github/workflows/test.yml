@@ -2,13 +2,18 @@ name: Run Tests
 
 on:
   push:
+    paths-ignore:
+      - ".github/**"
+      - "docs/**"
+      - "README.md"
+      - "LICENSE"
+      - "Dockerfile"
 
 jobs:
   run-tests:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.1.0
-      - run: cd ${{github.workspace}}
       - run: ./gradlew test
 
 
