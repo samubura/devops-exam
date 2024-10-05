@@ -22,7 +22,7 @@ jobs:
         run: echo "versiontype=${{ contains(github.event.head_commit.message, '[major]') && 'major' || contains(github.event.head_commit.message, '[minor]') && 'minor' || contains(github.event.head_commit.message, '[patch]') && 'patch'}}" >> "$GITHUB_OUTPUT"
 
       - id: compute-tag
-        uses: craig-day/compute-tag@v16
+        uses: craig-day/compute-tag@v18
         with:
           github_token: ${{ github.token }}
           version_scheme: semantic
@@ -34,7 +34,7 @@ jobs:
 
       - run: cd ${{github.workspace}}
 
-      - uses: rickstaa/action-create-tag@v1.6.3
+      - uses: rickstaa/action-create-tag@v1.7.2
         id: tag-create
         with:
           tag:  ${{steps.compute-tag.outputs.next_tag}}
