@@ -1,6 +1,4 @@
-package org.example.org.example
-
-import org.example.Library
+package org.example
 
 fun main() {
     val lib = Library();

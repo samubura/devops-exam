@@ -1,9 +1,7 @@
 plugins {
-    kotlin("jvm") version "2.0.0"
+    alias(libs.plugins.kotlin.jvm)
+    application
 }
-
-group = "org.example"
-version = "unspecified"
 
 repositories {
     mavenCentral()
@@ -14,9 +12,15 @@ dependencies {
     implementation(project(":lib"))
 }
 
+
+application {
+    mainClass = "org.example.MainKt"
+}
+
 tasks.test {
     useJUnitPlatform()
 }
+
 kotlin {
     jvmToolchain(17)
 }
