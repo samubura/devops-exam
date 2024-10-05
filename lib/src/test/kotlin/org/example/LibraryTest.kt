@@ -16,4 +16,9 @@ class LibraryTest {
         val classUnderTest = Library()
         assertTrue(!classUnderTest.someOtherMethod(), "someOtherMethod should return 'false'")
     }
+
+    @Test fun thirdMethodReturnsInt() {
+        val classUnderTest = Library()
+        assertTrue(classUnderTest.thirdMethod() is Int, "thirdMethod should return an Int")
+    }
 }
