@@ -1,4 +1,3 @@
-
 name: Tag and Release
 
 on:
@@ -11,10 +10,11 @@ on:
 jobs:
 
   run-tests:
+    if: ${{contains(github.event.head_commit.message, '[major]') || contains(github.event.head_commit.message, '[minor]') || contains(github.event.head_commit.message, '[patch]')}}
     uses: ./.github/workflows/test.yml
 
   tag-and-release:
-    if: ${{contains(github.event.head_commit.message, '[major]') || contains(github.event.head_commit.message, '[minor]') || contains(github.event.head_commit.message, '[patch]')}}
+    #if: ${{contains(github.event.head_commit.message, '[major]') || contains(github.event.head_commit.message, '[minor]') || contains(github.event.head_commit.message, '[patch]')}}
     runs-on: ubuntu-latest
     needs: run-tests
     steps:
