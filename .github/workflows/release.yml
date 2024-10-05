@@ -10,12 +10,11 @@ on:
 
 jobs:
   tag-and-release:
-    if: ${{contains(github.event.head_commit.message, '[major]') || contains(github.event.head_commit.message, '[minor]') || contains(github.event.head_commit.message, '[patch]')}}
+    if: ${{contains(github.event.workflow_run.head_commit.message, '[major]') || contains(github.event.workflow_run.head_commit.message, '[minor]') || contains(github.event.workflow_run.head_commit.message, '[patch]')}}
     runs-on: ubuntu-latest
-    needs: run-tests
     steps:
       - id: compute-versiontype
-        run: echo "versiontype=${{ contains(github.event.head_commit.message, '[major]') && 'major' || contains(github.event.head_commit.message, '[minor]') && 'minor' || contains(github.event.head_commit.message, '[patch]') && 'patch'}}" >> "$GITHUB_OUTPUT"
+        run: echo "versiontype=${{ contains(github.event.workflow_run.head_commit.message, '[major]') && 'major' || contains(github.event.workflow_run.head_commit.message, '[minor]') && 'minor' || contains(github.event.workflow_run.head_commit.message, '[patch]') && 'patch'}}" >> "$GITHUB_OUTPUT"
 
       - id: compute-tag
         uses: craig-day/compute-tag@v18
